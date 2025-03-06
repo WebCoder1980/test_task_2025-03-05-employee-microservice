@@ -116,13 +116,13 @@ public class EmployeeService {
                 employees.add(employeeDTO);
             }
 
-            saveAllEmployees(employees);
+            saveAll(employees);
         } catch (Exception e) {
             throw new RuntimeException("Ошибка при обработке файла", e);
         }
     }
 
-    public void saveAllEmployees(List<EmployeeDTO> employeeDTOs) {
+    public void saveAll(List<EmployeeDTO> employeeDTOs) {
         List<Employee> employees = employeeDTOs.stream()
                 .map(this::mapToEntity)
                 .collect(Collectors.toList());
