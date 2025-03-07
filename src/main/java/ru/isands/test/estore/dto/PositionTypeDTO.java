@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class PositionDTO {
+public class PositionTypeDTO {
     @NotNull
     private Long id;
 
