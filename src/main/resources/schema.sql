@@ -10,6 +10,13 @@ CREATE TABLE IF NOT EXISTS position_types (
     CONSTRAINT position_types_pkey PRIMARY KEY (id_)
 );
 
+CREATE TABLE IF NOT EXISTS shop (
+    id_ int8 NOT NULL,
+    name varchar(250) NOT NULL,
+    address text NOT NULL,
+    CONSTRAINT shop_pkey PRIMARY KEY (id_)
+);
+
 CREATE TABLE IF NOT EXISTS store_employee (
 	id_ int8 NOT NULL,
 	lastname varchar(100) NOT NULL,
@@ -24,9 +31,10 @@ CREATE TABLE IF NOT EXISTS store_employee (
     CONSTRAINT fk_employee_shop FOREIGN KEY (shopId) REFERENCES shop(id_)
 );
 
-CREATE TABLE IF NOT EXISTS shop (
-    id_ int8 NOT NULL,
-    name varchar(250) NOT NULL,
-    address text NOT NULL,
-    CONSTRAINT shop_pkey PRIMARY KEY (id_)
+CREATE TABLE IF NOT EXISTS electro_employee (
+    electroTypeId int8 NOT NULL,
+    employeeId int8 NOT NULL,
+    CONSTRAINT electro_employee_pkey PRIMARY KEY (electroTypeId, employeeId),
+    CONSTRAINT fk_electro_item_type FOREIGN KEY (electroTypeId) REFERENCES electro_item_type(id_),
+    CONSTRAINT fk_employee FOREIGN KEY (employeeId) REFERENCES store_employee(id_)
 );
