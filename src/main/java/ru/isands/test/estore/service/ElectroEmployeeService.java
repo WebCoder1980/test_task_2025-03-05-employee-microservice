@@ -11,6 +11,7 @@ import ru.isands.test.estore.dto.ElectroEmployeeDTO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -86,7 +87,12 @@ public class ElectroEmployeeService {
                     isFirstLine = false;
                     continue;
                 }
+
                 String[] data = line.split(";");
+
+                if (data.length < 2) {
+                    throw new RuntimeException("Файл содержит меньше столбцов, чем нужно");
+                }
 
                 ElectroEmployeeDTO electroEmployeeDTO = new ElectroEmployeeDTO();
                 electroEmployeeDTO.setEmployeeId(Long.parseLong(data[0].trim()));

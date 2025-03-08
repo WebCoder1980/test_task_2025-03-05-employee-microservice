@@ -13,6 +13,7 @@ import ru.isands.test.estore.dto.EmployeeDTO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -99,7 +100,12 @@ public class EmployeeService {
                     isFirstLine = false;
                     continue;
                 }
+
                 String[] data = line.split(";");
+
+                if (data.length < 8) {
+                    throw new RuntimeException("Файл содержит меньше столбцов, чем нужно");
+                }
 
                 EmployeeDTO employeeDTO = new EmployeeDTO();
                 employeeDTO.setLastName(data[1].trim());

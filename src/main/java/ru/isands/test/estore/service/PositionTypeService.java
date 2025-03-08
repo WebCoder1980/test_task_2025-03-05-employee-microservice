@@ -13,6 +13,7 @@ import ru.isands.test.estore.dto.PositionTypeDTO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -87,7 +88,12 @@ public class PositionTypeService {
                     isFirstLine = false;
                     continue;
                 }
+
                 String[] data = line.split(";");
+
+                if (data.length < 2) {
+                    throw new RuntimeException("Файл содержит меньше столбцов, чем нужно");
+                }
 
                 PositionTypeDTO positionTypeDTO = new PositionTypeDTO();
                 positionTypeDTO.setName(data[1].trim());
