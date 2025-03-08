@@ -105,7 +105,7 @@ public class ElectroEmployeeService {
         List<ElectroEmployee> electroEmployees = electroEmployeeDTOS.stream()
                 .map(this::mapToEntity)
                 .collect(Collectors.toList());
-        electroEmployRepository.saveAll(electroEmployees);
+        electroEmployees.forEach(i -> electroEmployRepository.save(i));
     }
 
     private ElectroEmployeeDTO mapToDTO(ElectroEmployee electroEmployee) {

@@ -126,7 +126,7 @@ public class EmployeeService {
         List<Employee> employees = employeeDTOs.stream()
                 .map(this::mapToEntity)
                 .collect(Collectors.toList());
-        employeeRepository.saveAll(employees);
+        employees.forEach(i -> employeeRepository.save(i));
     }
 
     private EmployeeDTO mapToDTO(Employee employee) {

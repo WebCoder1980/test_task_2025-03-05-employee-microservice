@@ -105,7 +105,7 @@ public class PositionTypeService {
         List<PositionType> positionTypes = positionTypeDTOs.stream()
                 .map(this::mapToEntity)
                 .collect(Collectors.toList());
-        positionTypeRepository.saveAll(positionTypes);
+        positionTypes.forEach(i -> positionTypeRepository.save(i));
     }
 
     private PositionTypeDTO mapToDTO(PositionType positionType) {
