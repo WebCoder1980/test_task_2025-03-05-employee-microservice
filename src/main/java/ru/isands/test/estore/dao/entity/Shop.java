@@ -15,7 +15,8 @@ public class Shop implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "shop_counter")
+    @TableGenerator(name = "shop_counter", pkColumnName = "name", pkColumnValue = "ru.isands.test.estore.dao.entity.Shop", table = "counter", valueColumnName = "currentid", allocationSize = 2)
     @Column(name = "id_", unique = true, nullable = false)
     @NotNull
     private Long id;

@@ -17,6 +17,12 @@ CREATE TABLE IF NOT EXISTS shop (
     CONSTRAINT shop_pkey PRIMARY KEY (id_)
 );
 
+CREATE TABLE IF NOT EXISTS electro_item_type (
+    id_ int8 NOT NULL,
+    name varchar(150) NOT NULL,
+    CONSTRAINT electro_item_type_pkey PRIMARY KEY (id_)
+);
+
 CREATE TABLE IF NOT EXISTS store_employee (
 	id_ int8 NOT NULL,
 	lastname varchar(100) NOT NULL,
