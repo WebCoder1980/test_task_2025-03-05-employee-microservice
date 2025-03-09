@@ -60,7 +60,7 @@ public class ElectroEmployeeController {
         return ResponseEntity.ok(electroEmployeeService.getByElectroIdAndShopId(electroId, shopId));
     }
 
-    @PutMapping("/id")
+    @PutMapping
     @Operation(summary = "Обновить информацию о сотрудник-товаре", parameters = {
             @Parameter(name = "electroid"),
             @Parameter(name = "shopid")
@@ -73,7 +73,7 @@ public class ElectroEmployeeController {
         return ResponseEntity.ok(electroEmployeeService.update(electroId, shopId, electroEmployeeDTO));
     }
 
-    @DeleteMapping("id")
+    @DeleteMapping
     @Operation(summary = "Удалить сотрудник-товар", parameters = {
             @Parameter(name = "electroid"),
             @Parameter(name = "shopid")
