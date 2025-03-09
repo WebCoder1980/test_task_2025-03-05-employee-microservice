@@ -63,27 +63,27 @@ public class ElectroEmployeeController {
     @PutMapping
     @Operation(summary = "Обновить информацию о сотрудник-товаре", parameters = {
             @Parameter(name = "electrotypeid"),
-            @Parameter(name = "shopid")
+            @Parameter(name = "employeeid")
     }, responses = {
             @ApiResponse(responseCode = "200", description = "Сотрудник-товар обновлен"),
             @ApiResponse(responseCode = "404", description = "Сотрудник-товар не найден", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "500", description = "Ошибка сервера", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDTO.class)))
     })
-    public ResponseEntity<ElectroEmployeeDTO> update(@RequestParam(value = "electrotypeid") Long electroTypeId, @RequestParam(value = "shopid") Long shopId, @RequestBody ElectroEmployeeDTO electroEmployeeDTO) {
-        return ResponseEntity.ok(electroEmployeeService.update(electroTypeId, shopId, electroEmployeeDTO));
+    public ResponseEntity<ElectroEmployeeDTO> update(@RequestParam(value = "electrotypeid") Long electroTypeId, @RequestParam(value = "employeeid") Long employeeId, @RequestBody ElectroEmployeeDTO electroEmployeeDTO) {
+        return ResponseEntity.ok(electroEmployeeService.update(electroTypeId, employeeId, electroEmployeeDTO));
     }
 
     @DeleteMapping
     @Operation(summary = "Удалить сотрудник-товар", parameters = {
             @Parameter(name = "electrotypeid"),
-            @Parameter(name = "shopid")
+            @Parameter(name = "employeeid")
     }, responses = {
             @ApiResponse(responseCode = "204", description = "Сотрудник-товар удален"),
             @ApiResponse(responseCode = "404", description = "Сотрудник-товар не найден", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDTO.class))),
             @ApiResponse(responseCode = "500", description = "Ошибка сервера", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDTO.class)))
     })
-    public ResponseEntity<Void> delete(@RequestParam(value = "electrotypeid") Long electroTypeId, @RequestParam(value = "shopid") Long shopId) {
-        electroEmployeeService.delete(electroTypeId, shopId);
+    public ResponseEntity<Void> delete(@RequestParam(value = "electrotypeid") Long electroTypeId, @RequestParam(value = "employeeid") Long employeeId) {
+        electroEmployeeService.delete(electroTypeId, employeeId);
         return ResponseEntity.noContent().build();
     }
 
